@@ -1,0 +1,26 @@
+# --- Gradle / build output (rebuilt inside the image) ---
+.gradle/
+build/
+gradlew
+gradlew.bat
+gradle/
+
+# --- Runtime output ---
+logs/
+*.log
+
+# --- VCS / IDE ---
+.git/
+.gitignore
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# --- Docs / container files not needed in the build context ---
+Dockerfile
+README.md
+DOCKER.md
+.dockerignore

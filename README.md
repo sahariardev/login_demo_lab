@@ -72,6 +72,20 @@ The app listens on port **8080** (change it with `server.port` in
 
 ---
 
+## Running with Docker
+
+A `Dockerfile` and a full [`DOCKER.md`](DOCKER.md) guide are included. Quick start:
+
+```bash
+docker build -t auth-demo:1.0.0 .
+docker run -d --name auth-demo -p 8080:8080 -e AGENT_TOKEN=dev-token-123 auth-demo:1.0.0
+```
+
+Then open <http://localhost:8080>. See [`DOCKER.md`](DOCKER.md) for the read-only/volume variants,
+environment variables, log access and troubleshooting.
+
+---
+
 ## How the login flow works
 
 1. `GET /login` renders the login form.
@@ -128,7 +142,11 @@ auth_lib/
 ├── build.gradle                     # Spring Boot 3.3 / Java 21 build
 ├── settings.gradle
 ├── gradlew / gradlew.bat            # Gradle wrapper
+├── Dockerfile                       # two-stage Gradle -> Alpine runtime image
+├── .dockerignore
+├── supervisor.sh                    # runs the agent + web app in one container
 ├── README.md
+├── DOCKER.md                        # how to build & run the image
 └── src/main/
     ├── java/com/example/authdemo/
     │   ├── AuthDemoApplication.java # Spring Boot entry point
